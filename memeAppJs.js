@@ -1,14 +1,19 @@
-function getMeme(){
-  function Get(yourUrl){
+function getMeme()
+{  
+  var json = JSON.parse(Get("https://meme-api.herokuapp.com/gimme"));
+  document.getElementById("memeImg").src = json.url;
+  
+  function Get(yourUrl)
+  {
     var Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET",yourUrl,false);
     Httpreq.send(null);
     return Httpreq.responseText;          
   } 
-  var json = JSON.parse(Get("https://meme-api.herokuapp.com/gimme"));
-  document.getElementById("memeImg").src = json.url;
+  
 }
-function copy(){
+function copy()
+{
   console.log("copy was called");
   var text = document.getElementById('memeImg').src;
   const el = document.createElement('textarea');
